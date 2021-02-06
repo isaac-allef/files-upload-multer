@@ -4,6 +4,7 @@ import { getRepository } from 'typeorm';
 import uploadConfig from '../config/upload';
 import SaveFileMetadataToDatabaseService from '../services/SaveFileMetadataToDatabaseService';
 import File from '../models/File';
+import DeleteFileAndMetadataService from '../services/DeleteFileAndMetadataService';
 
 const uploadsRouter = Router();
 const upload = multer(uploadConfig);
@@ -45,6 +46,20 @@ uploadsRouter.get('/:filename', async (request, response) => {
         const filesRepository = getRepository(File);
 
         const file = await filesRepository.findOne({ filename });
+
+        return response.json({ file });
+    } catch (err) {
+        return response.status(400).json({ error: err.message });
+    }
+});
+
+uploadsRouter.delete('/:filename', async (request, response) => {
+    try {
+        const { filename } = request.params;
+
+        const deleteFileAndMetadata = new DeleteFileAndMetadataService();
+
+        const file = await deleteFileAndMetadata.execute({ filename });
 
         return response.json({ file });
     } catch (err) {
