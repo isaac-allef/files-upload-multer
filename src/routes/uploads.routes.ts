@@ -38,4 +38,18 @@ uploadsRouter.get('/', async (request, response) => {
     }
 });
 
+uploadsRouter.get('/:filename', async (request, response) => {
+    try {
+        const { filename } = request.params;
+
+        const filesRepository = getRepository(File);
+
+        const file = await filesRepository.findOne({ filename });
+
+        return response.json({ file });
+    } catch (err) {
+        return response.status(400).json({ error: err.message });
+    }
+});
+
 export default uploadsRouter;
