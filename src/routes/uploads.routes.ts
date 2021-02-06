@@ -1,7 +1,9 @@
 import { Router } from 'express';
 import multer from 'multer';
+import { getRepository } from 'typeorm';
 import uploadConfig from '../config/upload';
 import SaveFileMetadataToDatabaseService from '../services/SaveFileMetadataToDatabaseService';
+import File from '../models/File';
 
 const uploadsRouter = Router();
 const upload = multer(uploadConfig);
@@ -19,6 +21,18 @@ uploadsRouter.post('/', upload.single('oneFile'), async (request, response) => {
         });
 
         return response.json(file);
+    } catch (err) {
+        return response.status(400).json({ error: err.message });
+    }
+});
+
+uploadsRouter.get('/', async (request, response) => {
+    try {
+        const filesRepository = getRepository(File);
+
+        const files = await filesRepository.find();
+
+        return response.json({ files });
     } catch (err) {
         return response.status(400).json({ error: err.message });
     }
