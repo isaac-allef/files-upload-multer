@@ -11,8 +11,8 @@ class File {
     @Column()
     mimetype: string;
 
-    @Column()
-    path: string;
+    @Column('integer')
+    size: number;
 
     @CreateDateColumn()
     created_at: Date;

@@ -23,8 +23,8 @@ export default class createFiles1612636127121 implements MigrationInterface {
                     type: 'varchar',
                 },
                 {
-                    name: 'path',
-                    type: 'varchar',
+                    name: 'size',
+                    type: 'integer',
                 },
                 {
                     name: 'created_at',
