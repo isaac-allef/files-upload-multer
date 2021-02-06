@@ -26,6 +26,16 @@ export default class createFiles1612636127121 implements MigrationInterface {
                     name: 'path',
                     type: 'varchar',
                 },
+                {
+                    name: 'created_at',
+                    type: 'timestamp',
+                    default: 'now()',
+                },
+                {
+                    name: 'updated_at',
+                    type: 'timestamp',
+                    default: 'now()',
+                },
             ],
         }));
     }
