@@ -29,7 +29,7 @@ This project was developed with the following technologies:
 
 ## :information_source: How To Use
 
-To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v12.20.0][nodejs] or higher + [Yarn 1.22.5][yarn] or higher installed on your computer. From your command line:
+To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v12.20.0][nodejs] or higher + [Yarn 1.22.5][yarn] or higher + [Docker 19.03.8][docker] or higher installed on your computer. From your command line:
 
 ```bash
 # Create postgres docker
@@ -228,3 +228,4 @@ Made with ♥ by Isaac Allef :wave:
 [nodejs]: https://nodejs.org/
 [yarn]: https://yarnpkg.com/
 [vc]: https://code.visualstudio.com/
+[docker]: https://www.docker.com/
